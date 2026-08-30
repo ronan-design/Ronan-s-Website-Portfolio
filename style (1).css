@@ -57,7 +57,33 @@ a:hover {
 /* ============================================================
    HEADER / NAV
    ============================================================ */
-.site-header {
+
+.site-social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.contact-link {
+  color: var(--color-paper);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.contact-link:hover {
+  color: var(--color-amber);
+}
+
+.social-icon {
+  color: var(--color-paper);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+.social-icon:hover {
+  color: var(--color-amber);
+}
+
+   .site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -138,8 +164,8 @@ a:hover {
    in the HTML to add a new one.
    ============================================================ */
 .entry-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-md);
   padding: 0 var(--space-xl) var(--space-xl);
 }
@@ -148,29 +174,29 @@ a:hover {
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  padding: var(--space-lg);
+  overflow: hidden;
+  text-align: left;
+}
+
+.entry img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
 }
 
 .entry h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
+  padding: var(--space-sm) var(--space-sm) 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-ink);
 }
 
 .entry-date {
+  padding: 0.2rem var(--space-sm) var(--space-sm);
   font-size: 0.85rem;
   color: var(--color-ink-soft);
-  margin-bottom: var(--space-sm);
-}
-
-.entry-desc {
-  color: var(--color-ink-soft);
-  max-width: 600px;
-}
-
-.entry-link {
-  display: inline-block;
-  margin-top: var(--space-sm);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 /* ============================================================
@@ -189,6 +215,9 @@ a:hover {
    ============================================================ */
 @media (max-width: 600px) {
 
+   .entry-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .site-header {
     flex-direction: column;
     align-items: center;
@@ -197,8 +226,10 @@ a:hover {
   }
 
   .site-nav {
-    justify-content: center;
-    gap: var(--space-md);
+  justify-content: center;
+  gap: var(--space-sm);
+  font-size: 0.85rem;
+  flex-wrap: nowrap; /* forces all items to stay on one line instead of wrapping */
   }
 
   /* Mobile header is taller (wraps to 2 lines), so it needs a
