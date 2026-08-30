@@ -188,14 +188,26 @@ a:hover {
    RESPONSIVE — tighter spacing on phones
    ============================================================ */
 @media (max-width: 600px) {
-  .site-header,
-  .profile-section,
-  .entry-list,
-  .section-title {
-  padding: var(--space-lg) var(--space-xl) var(--space-md);
-  margin-top: -100px;
-  padding-top: calc(100px + var(--space-lg));
+
+  .site-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-sm);
   }
+
+  .site-nav {
+    justify-content: center;
+    gap: var(--space-md);
+  }
+
+  /* Mobile header is taller (wraps to 2 lines), so it needs a
+     bigger scroll offset than desktop */
+  .section-title {
+    margin-top: -140px;
+    padding-top: calc(140px + var(--space-lg));
+  }
+  
   .profile-section {
     text-align: center;
     justify-content: center;
